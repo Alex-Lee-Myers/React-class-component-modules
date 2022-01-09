@@ -43,6 +43,28 @@ export default class ClassComponentsProps extends Component {
                 <input type="text" value={this.state.newFruit} onChange={this.handleChange}/>
                 <button onClick={this.handleClick}>Add Fruit</button>
             </div>
+            // include FruitBowl component
         );
     }
+}
+
+class FruitBowl extends Component {
+    render() {
+        return (
+            <div>
+                {this.props.fruits.map((fruit) => {
+                    return <Fruit passingFruit={fruit} />;
+                }
+                )}
+            </div>
+        );
+    }
+}
+
+const Fruit = (props) => {
+    return (
+        <div>
+            <h3>{props.passingFruit}</h3>
+        </div>
+    )
 }
