@@ -11,11 +11,27 @@ export default class ClassComponentsProps extends Component {
         };
     }
 
+    // The component's handleChange method should update the state's newFruit property.
+    handleChange = (event) => {
+        this.setState({
+            newFruit: event.target.value
+        });
+    }
+
+    // The component's handleClick method should add the newFruit property to the state's fruits array.
+    handleClick = () => {
+        this.setState({
+            fruits: [...this.state.fruits, this.state.newFruit],
+            newFruit: ''
+        });
+    }
+
     // The component's render method should return a list of fruits. Each fruit should be a list item.
 
     render() {
         return (
             <div>
+                <hr />
                 <h1>Fruits</h1>
                 <ul>
                     {this.state.fruits.map((fruit, index) => {
