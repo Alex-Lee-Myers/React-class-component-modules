@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
+import { BiLike, BiDislike } from 'react-icons/bi';
 
 export default class ClassComponentDemo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            simpleMessage: "Welcome user!!!"
+            likes: 0,
+            dislikes: 0
         }
     }
 
+    incrementLikes = () => {
+        console.log("Incrementing likes...");
+        this.setState({
+            likes: this.state.likes + 1
+        })
+    }
+
+    incrementDislikes = () => {
+        console.log("Incrementing dislikes...");
+        this.setState({
+            dislikes: this.state.dislikes + 1
+        })
+    }
+
+
     render() {
+        console.log("render called...");
         return (
             <div className="main">
                 <div className="mainDiv">
-                    <h4>
-                        {this.state.simpleMessage}
-                    </h4>
+                    <ClassComponentNotes />
+                    <hr />
+                    <BiLike onClick={this.incrementLikes} />
+                    {this.state.likes}
+                    {/* Show Dislikes Count */}
+                    <BiDislike onClick={this.incrementDislikes} />
+                    {this.state.dislikes}
                 </div>
             </div>
         );
